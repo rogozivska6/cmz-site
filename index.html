@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Центр ментального здоров'я — КНП КМКЛ №1</title>
+    <style>
+        :root {
+            --primary-teal: #008080;
+            --light-teal: #e0f2f1;
+            --accent-teal: #20b2aa;
+            --bg-color: #f4fbfb;
+            --text-color: #333333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        /* Шапка сайту */
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid var(--light-teal);
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            color: var(--primary-teal);
+            font-size: 16px;
+        }
+        .logo-box img {
+            max-height: 45px;
+        }
+        .contact-info {
+            text-align: right;
+            font-size: 14px;
+            color: #555;
+        }
+        .contact-info a {
+            color: var(--primary-teal);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Головний контейнер */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Банер / Головний екран */
+        .hero {
+            background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+            padding: 40px 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #004d40;
+        }
+        .hero h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Картки опису послуг */
+        .info-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .info-card {
+            background: #ffffff;
+            border-top: 4px solid var(--accent-teal);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .info-card h3 {
+            color: var(--primary-teal);
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .info-card ul {
+            padding-left: 18px;
+            margin: 10px 0 0 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .info-card li {
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            color: var(--primary-teal);
+            border-bottom: 2px solid var(--light-teal);
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+
+        .notice {
+            background-color: var(--light-teal);
+            border-left: 4px solid var(--primary-teal);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 15px;
+            color: #004d40;
+        }
+
+        /* Сітка фахівців */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            align-items: stretch;
+        }
+        .team-card {
+            background: #ffffff;
+            border: 1px solid #b2dfdb;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .team-card-inner {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .team-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px auto;
+            border: 3px solid var(--accent-teal);
+            flex-shrink: 0;
+        }
+        /* Фіксована висота для імені */
+        .team-card h3 {
+            margin: 5px 0 8px 0;
+            font-size: 17px;
+            color: var(--primary-teal);
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+        /* Спеціальний клас для трохи меншого шрифту довгих імен (щоб ставали в 1 рядок) */
+        .team-card h3.short-name {
+            font-size: 14.5px;
+        }
+        /* Фіксована висота для посади */
+        .team-card .role {
+            font-size: 14px;
+            color: #00796b;
+            font-weight: bold;
+            margin-bottom: 15px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.3;
+        }
+        .team-card ul {
+            text-align: left; 
+            font-size: 13px; 
+            color: #555; 
+            padding-left: 18px; 
+            margin: 0;
+            line-height: 1.4;
+            list-style-position: outside;
+        }
+        .team-card li {
+            margin-bottom: 6px;
+        }
+
+        /* Форма запису */
+        .form-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #b2dfdb;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary-teal);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #80cbc4;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #f7fcfc;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 5px rgba(0, 128, 128, 0.2);
+        }
+        button {
+            width: 100%;
+            background-color: var(--primary-teal);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #006666;
+        }
+        #status {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Карта */
+        .map-container {
+            margin-top: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--light-teal);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #555;
+            font-size: 14px;
+            background-color: #ffffff;
+            border-top: 1px solid var(--light-teal);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="logo-box">
+            <img src="logo.png" alt="Логотип ЦМЗ" onerror="this.outerHTML='<span>🌿 ЦЕНТР МЕНТАЛЬНОГО ЗДОРОВ\'Я</span>'">
+            <span style="font-size: 12px; color: #666; font-weight: normal;">КНП КМКЛ №1</span>
+        </div>
+        <div class="contact-info">
+            📍 вул. Рогозівська, 6, Київ<br>
+            📞 <a href="tel:+380445688068">(044) 568-80-68</a> | <a href="tel:+380979346939">+380 97 934 69 39</a>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="hero">
+        <h1>Центр ментального здоров'я</h1>
+        <p>Надаємо фахову допомогу військовослужбовцям, ветеранам та цивільним пацієнтам у Києві.</p>
+    </div>
+
+    <div class="info-cards-grid">
+        <div class="info-card">
+            <h3>🏥 У нашому центрі ви можете отримати:</h3>
+            <ul>
+                <li>Медичний супровід лікаря-психіатра: фахова діагностика та терапія.</li>
+                <li>Індивідуальна та групова психотерапія.</li>
+                <li>Кризова психологічна допомога та стабілізація.</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h3>👥 Для кого ми працюємо:</h3>
+            <ul>
+                <li>Військовослужбовці та ветерани війни.</li>
+                <li>Члени їхніх сімей та близькі.</li>
+                <li>Діти, підлітки та їхні батьки (корекційні заняття та підтримка).</li>
+                <li>Усі цивільні пацієнти, які переживають складний життєвий період.</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h3>💡 З чим ми можемо допомогти:</h3>
+            <ul>
+                <li>Наслідки сильного стресу або травматичних подій.</li>
+                <li>Тривожні стани, панічні атаки, порушення сну.</li>
+                <li>Емоційне вигорання та втрата внутрішніх опор.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="notice">
+        <strong>Безпека та комфорт:</strong> У складні часи ви можете обрати зручний формат консультації — <strong>офлайн</strong> у нашому Центрі на Рогозівській або безпечний <strong>онлайн</strong>-формат з будь-якого місця.
+    </div>
+
+    <!-- Команда фахівців -->
+    <section>
+        <h2>Наші фахівці</h2>
+        <div class="team-grid">
+            <!-- 1. Ольга Денисенко -->
+            <div class="team-card">
+                <div class="team-card-inner">
+                    <img src="doctor1.jpg" alt="Ольга Григорівна Денисенко" onerror="this.src='https://via.placeholder.com/100?text=Лікар'">
+                    <div>
+                        <h3>Ольга Григорівна Денисенко</h3>
+                        <div class="role">Завідувачка Центру, Лікар-психіатр</div>
+                        <ul>
+                            <li>Інтегративний підхід та психотерапевтичний супровід.</li>
+                            <li>Робота з військовослужбовцями, ветеранами та родинами.</li>
+                            <li>Кризова психологія та стрес-асоційовані розлади (ПТСР).</li>
+                            <li>Тривожно-фобічні розлади, панічні стани та депресії.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Олександр Божок -->
+            <div class="team-card">
+                <div class="team-card-inner">
+                    <img src="doctor2.jpg" alt="Божок Олександр Сергійович" onerror="this.src='https://via.placeholder.com/100?text=Лікар'">
+                    <div>
+                        <h3>Олександр Сергійович Божок</h3>
+                        <div class="role">Лікар-психіатр</div>
+                        <ul>
+                            <li>Депресивні стани, неврози та панічні атаки.</li>
+                            <li>Тривога, безсоння, виснаження та розлади адаптації.</li>
+                            <li>ПТСР, гострі стресові реакції та афективні розлади.</li>
+                            <li>Вікові зміни пам'яті, когнітивні порушення та деменція.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Аліна Ганоцька -->
+            <div class="team-card">
+                <div class="team-card-inner">
+                    <img src="doctor3.jpg" alt="Аліна Андріївна Ганоцька" onerror="this.src='https://via.placeholder.com/100?text=Лікар'">
+                    <div>
+                        <h3>Аліна Андріївна Ганоцька</h3>
+                        <div class="role">Лікар-психіатр</div>
+                        <ul>
+                            <li>Тривожні розлади, фобії, ОКР та панічні стани.</li>
+                            <li>Афективні розлади настрою та депресивні епізоди.</li>
+                            <li>Стрес-асоційовані розлади та наслідки ПТСР.</li>
+                            <li>Корекція станів при органічних ураженнях і наслідках ЧМТ.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Ірина Невмержицька -->
+            <div class="team-card">
+                <div class="team-card-inner">
+                    <img src="psychologist2.jpg" alt="Ірина Юріївна Невмержицька" onerror="this.src='https://via.placeholder.com/100?text=Психолог'">
+                    <div>
+                        <h3>Ірина Юріївна Невмержицька</h3>
+                        <div class="role">Клінічний психолог</div>
+                        <ul>
+                            <li>Патопсихологічна діагностика та консультування дорослих.</li>
+                            <li>Кризова допомога та робота з військовослужбовцями, ветеранами й родинами.</li>
+                            <li>Психологічна корекція тривожно-депресивних розладів, розладів адаптації, ПТСР та ведення груп.</li>
+                            <li>Використання ТФ КПТ, трансактного аналізу та арттерапевтичних й ресурсних технік.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Анна Журавльова -->
+            <div class="team-card">
+                <div class="team-card-inner">
+                    <img src="psychologist3.jpg" alt="Анна Олександрівна Журавльова" onerror="this.src='https://via.placeholder.com/100?text=Психолог'">
+                    <div>
+                        <h3 class="short-name">Анна Олександрівна Журавльова</h3>
+                        <div class="role">Клінічний психолог, дитячий психолог</div>
+                        <ul>
+                            <li>Консультування дорослих (емоційні труднощі, стосунки, кризи, складні життєві ситуації).</li>
+                            <li>Психолого-педагогічна робота з дітьми.</li>
+                            <li>Корекційно-розвиткова робота з дітьми з інвалідністю та іншими особливостями розвитку.</li>
+                            <li>Психологічна підтримка та консультування батьків.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма запису -->
+    <section class="form-section" id="booking">
+        <h2>Записатися на консультацію</h2>
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="doctor">Оберіть фахівця:</label>
+                <select id="doctor" required>
+                    <option value="" disabled selected>-- Виберіть лікаря або психолога --</option>
+                    <option value="Лікар-психіатр: Ольга Григорівна Денисенко">Лікар-психіатр: Ольга Григорівна Денисенко</option>
+                    <option value="Лікар-психіатр: Олександр Сергійович Божок">Лікар-психіатр: Олександр Сергійович Божок</option>
+                    <option value="Лікар-психіатр: Аліна Андріївна Ганоцька">Лікар-психіатр: Аліна Андріївна Ганоцька</option>
+                    <option value="Клінічний психолог: Ірина Юріївна Невмержицька">Клінічний психолог: Ірина Юріївна Невмержицька</option>
+                    <option value="Клінічний психолог: Анна Олександрівна Журавльова">Клінічний психолог: Анна Олександрівна Журавльова</option>
+                    <option value="Первинний розподіл / Будь-який фахівець">Первинний розподіл / Будь-який вільний фахівець</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Ваше ім'я:</label>
+                <input type="text" id="name" required placeholder="Введіть ваше ім'я">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Номер телефону:</label>
+                <input type="tel" id="phone" required placeholder="+380XXXXXXXXX">
+            </div>
+
+            <div class="form-group">
+                <label for="format">Формат консультації:</label>
+                <select id="format" required>
+                    <option value="Офлайн (у Центрі на Рогозівській)">Офлайн (у Центрі на Рогозівській)</option>
+                    <option value="Онлайн (безпечний формат)">Онлайн (безпечний формат)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Коментар або побажання (необов'язково):</label>
+                <textarea id="comment" rows="3" placeholder="Коротко опишіть запит або зручний час"></textarea>
+            </div>
+
+            <button type="submit">Підтвердити запис</button>
+            <p id="status"></p>
+        </form>
+    </section>
+
+    <!-- Карта знизу -->
+    <section class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.3204!2d30.6738942!3d50.4521558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4db005160d345%3A0x5ab1c59f650afd2c!2z0KbQtdC90YLRgCDQvNC10L3RgtCw0LvRjNC90L7Qs9C-INC30LTQvtGA0L7Qssq80Y8g0JrQnNCa0JvihJYxINCm0JzQlyDQmtCY0IfQkg!5e0!3m2!1suk!2sua!4v1710000000000!5m2!1suk!2sua" 
+            width="100%" 
+            height="350" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 Центр ментального здоров'я • КНП КМКЛ №1. Всі права захищені.</p>
+</footer>
+
+<script>
+    const BOT_TOKEN = "8805166818:AAEbZgJZPM4x7ICmgvXNflw4wUHiPcIXX_c";
+    const CHAT_ID = "1265831946";
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const doctor = document.getElementById('doctor').value;
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const format = document.getElementById('format').value;
+        const comment = document.getElementById('comment').value || 'Відсутній';
+        const status = document.getElementById('status');
+
+        status.style.color = '#333';
+        status.textContent = 'Відправляємо заявку...';
+
+        const message = `🧠 Нова заявка на запис у ЦМЗ:\n\n` +
+                        `👨‍⚕ Фахівець: ${doctor}\n` +
+                        `👤 Пацієнт: ${name}\n` +
+                        `📞 Телефон: ${phone}\n` +
+                        `💻 Формат: ${format}\n` +
+                        `💬 Коментар: ${comment}`;
+
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                status.style.color = 'green';
+                status.textContent = 'Дякуємо! Ваша заявка успішно надіслана. Ми зв\'яжемося з вами.';
+                document.getElementById('bookingForm').reset();
+            } else {
+                status.style.color = 'red';
+                status.textContent = 'Помилка надсилання. Спробуйте ще раз пізніше.';
+            }
+        })
+        .catch(error => {
+            status.style.color = 'red';
+            status.textContent = 'Помилка мережі. Перевірте підключення.';
+            console.error('Error:', error);
+        });
+    });
+</script>
+
+</body>
+</html>
